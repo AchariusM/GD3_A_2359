@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maxi's DOM API Javascript</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="box">
+        <h3>Website Pelangi</h3>
+
+        <br>
+
+        <label>Pilih warna teks terkeren:</label>
+        <input type="color" id="textColor">
+
+        <br><br>
+
+        <div class="file-row">
+            <label>Choose a sacrifice:</label>
+            <input type="file" id="fileBg" accept="image/*">
+        </div>
+    </div>
+
+<script>
+
+var txtColor = document.getElementById("textColor");
+
+txtColor.addEventListener("input", function(){
+    document.body.style.color = txtColor.value;
+});
+
+fileBg.addEventListener("change", (event) => {
+
+    var doc = event.target.files[0];
+
+    if (doc) {
+
+        var file = new FileReader();
+
+        file.onload = function(e) {
+
+            document.body.style.backgroundImage = `url('${e.target.result}')`;
+            document.body.style.backgroundSize = "cover";
+            document.body.style.backgroundRepeat = "no-repeat";
+            document.body.style.backgroundPosition = "center";
+
+        };
+
+        file.readAsDataURL(doc);
+    }
+
+});
+
+</script>
+
+</body>
+</html>
